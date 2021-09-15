@@ -8,8 +8,10 @@ export function initCuadro(){
             this.render();
         }
         render(){
-            const lastState = JSON.parse(localStorage.getItem("score"));
-            console.log(lastState);
+            const jugador1 = state.getState().jugador1;
+            const jugador2 = state.getState().jugador2;
+            const scoreP1 = state.getState().scoreP1;
+            const scoreP2 = state.getState().scoreP2;
             
             var style = document.createElement("style");
             style.textContent=
@@ -58,8 +60,8 @@ export function initCuadro(){
             `
             <div class="cuadro">
                 <p class="cuadro__titulo">Score</p>\
-                <p class="cuadro__usuario"> Vos: ${lastState.usuario}</p>
-                <p class="cuadro__pc"> Maquina: ${lastState.pc}</p>
+                <p class="cuadro__usuario"> ${jugador1}: ${scoreP1}</p>
+                <p class="cuadro__pc"> ${jugador2}: ${scoreP2}</p>
             </div>
             `
             

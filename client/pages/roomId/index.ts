@@ -4,18 +4,38 @@ import { state } from "../../state";
 class initRoomId extends HTMLElement{
     connectedCallback(){
         this.render();
-       //tomar el codigo que se ingresa y verificar 
+        
+        //tomar el codigo que se ingresa y verificar 
+        
         this.querySelector(".room").addEventListener("click",(e)=>{
             e.preventDefault();
-            const codigo = document.querySelector(".codigo").shadowRoot.querySelector("input").value;
+            const id = document.querySelector(".codigo").shadowRoot.querySelector("input").value;
             const lastState = state.getState();
-            state.setState({
-                ...lastState,
-                codigo,
+            state.validateRoomId(id).then((res)=>{
+    
+                
+                res.json().then(respuesta=>{
+                    
+                    if(respuesta.existe == true){
+                        state.setState({
+                            ...lastState,
+                            unir : respuesta.existe,
+                            roomId: id,
+                            rtdbRoomId: respuesta.rtdbRoomId,
+                        })
+                        
+                        Router.go("/nombre")
+                    } else{
+                        state.setState({
+                            ...lastState,
+                            unir: respuesta.existe,
+                        })
+                        //crear algun alerta que diga que ese room no existe. 
+                    }
+                    
+                })
+                
             })
-            //laburar el id en firebase. 
-            Router.go("/nombre");
-            
         })
     }
 

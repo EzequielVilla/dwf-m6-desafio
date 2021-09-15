@@ -5,6 +5,7 @@ import { initFooter } from "./components/footer";
 import { initJugadas } from "./components/jugadas";
 import { initTiempo } from "./components/tiempo";
 import { initInput } from "./components/input";
+import { initInfo } from "./components/info";
 
 import "./pages/home/index";
 import "./pages/roomId/index"
@@ -18,7 +19,6 @@ import "./pages/resultado/index"
 import "./routes"
 
 
-// tests();
 
 function main(){
     initBoton();
@@ -28,6 +28,7 @@ function main(){
     initFooter();
     initCuadro();
     initInput();
+    initInfo();
 }
 
 main();

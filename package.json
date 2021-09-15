@@ -5,12 +5,11 @@
   "scripts": {
     "dev:front": "parcel serve ./client/index.html",
     "build:front": "parcel build ./client/index.html",
-    "dev": "nodemon --watch ./server/index.ts --exec ts-node ./server/dev.ts",
+    "dev": "npm run build && nodemon --watch ./server/index.ts --exec ts-node ./server/dev.ts",
     "test": "ava",
     "build:api": "tsc ./server/index.ts",
     "build": "npm run build:front && npm run build:api",
     "start": "node ./server/index.js"
-    
   },
   "keywords": [],
   "author": "",
@@ -21,6 +20,7 @@
     "express": "^4.17.1",
     "firebase": "^8.10.0",
     "firebase-admin": "^9.11.0",
+    "firebase-functions": "^3.15.5",
     "lodash": "^4.17.21",
     "nanoid": "^3.1.25",
     "nodemon": "^2.0.12",

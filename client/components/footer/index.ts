@@ -24,7 +24,6 @@ export function initFooter(){
                     margin-right:45px;
                     margin-bottom:-30px; 
                 }
-                
             `
             this.shadow.appendChild(style);
 

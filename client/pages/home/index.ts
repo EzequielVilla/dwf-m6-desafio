@@ -1,14 +1,14 @@
 import { Router } from "@vaadin/router";
-// import { state } from "../../state";
+import { state } from "../../state";
 
 class initHome extends HTMLElement{
     connectedCallback(){
         this.render();
-        //Deberia inicializar el state local cuando ponga el nombre de la persona. 
-        // const lastState = state.getState();
-        // if (lastState.inicializo == false){
-        //     state.initScore();
-        // }
+        // Deberia inicializar el state local cuando ponga el nombre de la persona. 
+        const lastState = state.getState();
+        if (lastState.inicializo == false){
+            state.initScore();
+        }
         this.querySelector(".new-game").addEventListener("click",(e)=>{
             e.preventDefault();
             Router.go("/nombre");
