@@ -3,9 +3,8 @@ import { rtdb, firestore } from "./rtdb";
 import * as path from "path"
 import { nanoid } from "nanoid";
 import * as cors from "cors";
-import { isFunctionExpression } from "typescript";
-import firebase from "firebase";
-type SoloJugador = "jugador1" | "jugador2"
+
+
 //configuracion del servidor.
 const port = process.env.PORT || 3000;
 const app = express();
