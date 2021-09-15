@@ -29,7 +29,7 @@ app.post("/signup",(req,res)=>{
         userCollection.add({
             nombre,
         }).then(newUserRef=>{
-            res.json({
+            res.status(200).json({
                 id : newUserRef.id,
             })
         })
