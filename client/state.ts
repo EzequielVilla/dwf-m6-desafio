@@ -40,7 +40,7 @@ export const state = {
         return fetch(API_BASE_URL+`/signup`,{
             method: 'post',
             headers:{
-                "content-type":"application/json"
+                "Content-Type":"application/json"
             },
             body:JSON.stringify({
                 nombre,
@@ -53,7 +53,7 @@ export const state = {
         return fetch(API_BASE_URL+`/createroom`,{
             method:'post',
             headers:{
-                "content-type":"application/json"
+                "Content-Type":"application/json"
             },
             body: JSON.stringify({
                 nombre,
@@ -84,7 +84,7 @@ export const state = {
         return fetch(API_BASE_URL+`/pushUser/${rtdbRoomId}`,{
             method:"post",
             headers:{
-                "content-type":"application/json"
+                "Content-Type":"application/json"
             },
             body: JSON.stringify({
                 nombre,
@@ -98,7 +98,7 @@ export const state = {
         fetch(API_BASE_URL+`/setReady`,{
             method:"post",
             headers:{
-                "content-type":"application/json"
+                "Content-Type":"application/json"
             },
             body: JSON.stringify({
                 jugador,
@@ -152,7 +152,7 @@ export const state = {
         return fetch(API_BASE_URL+`/setPlay/${jugador}`,{
             method:"post",
             headers:{
-                "content-type":"application/json"
+                "Content-Type":"application/json"
             },
             body: JSON.stringify({
                 jugada,
@@ -196,7 +196,7 @@ export const state = {
             fetch(API_BASE_URL+`/setPunto/${jugador}`,{
                 method:"post",
                 headers:{
-                    "content-type":"application/json"
+                    "Content-Type":"application/json"
                 },
                 body: JSON.stringify({
                     rtdbRoomId,
@@ -210,7 +210,7 @@ export const state = {
         fetch(API_BASE_URL+`/setGanador/${jugador}`,{
             method:"post",
             headers:{
-                "content-type":"application/json"
+                "Content-Type":"application/json"
             },
             body: JSON.stringify({
                 rtdbRoomId,                
@@ -222,7 +222,7 @@ export const state = {
         return fetch(API_BASE_URL+`/setFalse/${jugador}`,{
             method:"post",
             headers:{
-                "content-type":"application/json"
+                "Content-Type":"application/json"
             },
             body:JSON.stringify({
                 rtdbRoomId,
