@@ -7,6 +7,11 @@ import * as cors from "cors";
 
 //configuracion del servidor.
 const port = process.env.PORT || 3000;
+
+
+console.log(port);
+
+
 const app = express();
 app.use(express.json());
 app.use(cors());
@@ -20,22 +25,13 @@ const roomsCollection = firestore.collection("rooms");
 app.post("/signup",(req,res)=>{    
     const {nombre} = req.body;
      userCollection.where("nombre", "==", nombre).get().then(searchResponse=>{
-        // if(searchResponse.empty){
-            userCollection.add({
-                nombre,
-            }).then(newUserRef=>{
-                res.json({
-                    id : newUserRef.id,
-                })
+        userCollection.add({
+            nombre,
+        }).then(newUserRef=>{
+            res.json({
+                id : newUserRef.id,
             })
-        // }
-        // else{
-        //     res.status(400).json({
-        //         //esto habria que cambiar porque puede haber muchos nombres parecidos.
-        //         message: "User already exist"
-        //     })
-        // }
-        
+        })
     })
 })
 
@@ -66,12 +62,8 @@ app.post("/createroom", (req,res)=>{
                     ganador: "none",
                 }
             }).then(rtdbRes =>{
-                //el ID de la RTDB
-                
                 const roomLongId = roomRef.key;
-                //crea el numero del id sencillo
                 const roomId = 1000 + Math.floor(Math.random()*999);
-                //se crea un room para que tenga guardado adentro el ID de la RTDB asi no conocemos el ID Largo 
                 roomsCollection.doc(roomId.toString()).set({
                     rtdbRoomId : roomLongId,
                 }).then(()=>{})
