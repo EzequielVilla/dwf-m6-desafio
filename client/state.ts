@@ -1,5 +1,5 @@
 import {rtdb} from "./rtdb"
-const API_BASE_URL = "http://localhost:3000";
+const API_BASE_URL = process.env.HOST ||"http://localhost:3000";
 
 type Jugada = "piedra" | "papel" | "tijera";
 type Jugadores = "usuario" | "pc";
