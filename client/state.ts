@@ -123,7 +123,6 @@ export const state = {
 
     init(rtdbRoomId){
         const roomRef = rtdb.ref(`/gameRooms/rooms/${rtdbRoomId}`);
-        
         roomRef.on("value", (snapshot) =>{
             const lastState = this.getState();
             const p1 = snapshot.val().jugador1;
@@ -158,7 +157,11 @@ export const state = {
             localStorage.setItem("data", JSON.stringify({
                 ...afterUpgrade,       
             }));
-        });        
+        });    
+        const estado = state.getState();
+        localStorage.setItem("data", JSON.stringify({
+            ...estado,       
+        }));
         const localData = JSON.parse(localStorage.getItem("data"))
         console.log(localData, "LOCAL DATA");
         
