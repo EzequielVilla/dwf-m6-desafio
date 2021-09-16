@@ -156,14 +156,16 @@ export const state = {
                 ganador,
             });
             const afterUpgrade = state.getState();
-            
             localStorage.setItem("data", JSON.stringify({
                 ...afterUpgrade,       
             }));
             const localData = JSON.parse(localStorage.getItem("data"))
-            this.setState({
-                ...localData,
-            })
+            console.log(localData, "LOCAL DATA");
+            
+            // this.setState({
+            //     ...afterUpgrade,
+            //     localData,
+            // })
         });        
     },
   
