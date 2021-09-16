@@ -154,7 +154,9 @@ export const state = {
         });        
     },
     refreshHandler(){
-        if(state.getState().refresh == true){
+        if(this.getState().refresh == true){
+            console.log('entra al if refresh');
+            
             this.data = JSON.parse(localStorage.getItem("data"));    
             this.data.refresh = false;
                 
