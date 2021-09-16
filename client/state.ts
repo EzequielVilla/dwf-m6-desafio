@@ -144,9 +144,12 @@ export const state = {
             });
             
             window.onbeforeunload = function() {
-                localStorage.setItem("data", JSON.stringify({
+                this.setState({
                     ...lastState,
                     refresh:true,
+                })
+                localStorage.setItem("data", JSON.stringify({
+                    ...lastState,  
                 }));
             };
             this.refreshHandler();
