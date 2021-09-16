@@ -141,22 +141,21 @@ export const state = {
                 eligioP2,
                 ganador,
             });
-            localStorage.setItem("data", JSON.stringify({
-                ...lastState,
-                jugador1,
-                jugador2,
-                scoreP1,
-                scoreP2,
-                eleccionP1,
-                eleccionP2,
-                readyP1,
-                readyP2,
-                eligioP1,
-                eligioP2,
-                ganador,
-            }));
-            if(localStorage.getItem('data') != this.getState()){
-                this.data = localStorage.getItem('data');
+            window.onbeforeunload = function() {
+                localStorage.setItem("data", JSON.stringify({
+                    ...lastState,
+                    jugador1,
+                    jugador2,
+                    scoreP1,
+                    scoreP2,
+                    eleccionP1,
+                    eleccionP2,
+                    readyP1,
+                    readyP2,
+                    eligioP1,
+                    eligioP2,
+                    ganador,
+                }));
             }
             
         });        
