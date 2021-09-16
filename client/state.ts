@@ -148,8 +148,8 @@ export const state = {
                     ...lastState,  
                     refresh:true,
                 }));
+                this.refreshHandler();
             };
-            this.refreshHandler();
             
         });        
     },
