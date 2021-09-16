@@ -3,6 +3,7 @@ import { state } from "../../state";
 
 class initEspera extends HTMLElement{
     connectedCallback(){
+        state.refreshHandler(); 
         state.subscribe(()=>{
             const readyP1 = state.getState().readyP1;
             const readyP2 = state.getState().readyP2

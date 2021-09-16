@@ -6,18 +6,18 @@ class initCompartirId extends HTMLElement{
     conexion: boolean;
     texto: String
     connectedCallback(){
-
-                state.subscribe(()=>{
-                    const estadoActual = state.getState();
-                    if(estadoActual.jugador2 == false){
-                        this.conexion = false;
-                        this.render();
-                    }
-                    else {
-                        this.conexion = true;
-                        this.render();
-                    }
-                })
+        state.refreshHandler(); 
+        state.subscribe(()=>{
+            const estadoActual = state.getState();
+            if(estadoActual.jugador2 == false){
+                this.conexion = false;
+                this.render();
+            }
+            else {
+                this.conexion = true;
+                this.render();
+            }
+        })
 
     }
     siguiente(){

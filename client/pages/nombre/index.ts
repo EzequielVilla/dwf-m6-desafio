@@ -4,6 +4,7 @@ import { state } from "../../state";
 
 class initNombre extends HTMLElement{
     connectedCallback(){
+        state.refreshHandler(); 
         const rtdbRoomId:string = state.getState().rtdbRoomId;        
         if (rtdbRoomId != undefined){
             state.init(rtdbRoomId);
