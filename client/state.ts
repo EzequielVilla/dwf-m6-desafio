@@ -34,7 +34,12 @@ export const state = {
         console.log('cambie:', this.data);
     },
 
-
+    initLocalStorage(){
+        const localData =JSON.parse(localStorage.getItem("data"))
+        this.setState({
+        ...localData,
+        })
+    },
 
     crearUsuario(nombre:string):Promise<any>{
         return fetch(API_BASE_URL+`/signup`,{
