@@ -128,6 +128,20 @@ export const state = {
             const eligioP1 = p1.eligio;
             const eligioP2 = p2.eligio;
             
+            this.setState({
+                ...lastState,
+                jugador1,
+                jugador2,
+                scoreP1,
+                scoreP2,
+                eleccionP1,
+                eleccionP2,
+                readyP1,
+                readyP2,
+                eligioP1,
+                eligioP2,
+                ganador,
+            });
             localStorage.setItem("data", JSON.stringify({
                 ...lastState,
                 jugador1,
@@ -142,7 +156,7 @@ export const state = {
                 eligioP2,
                 ganador,
             }));
-            this.data = JSON.parse(localStorage.getItem("data"));
+            
             
         });        
     },
