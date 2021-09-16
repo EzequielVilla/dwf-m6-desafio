@@ -4,8 +4,7 @@ import { state } from "../../state";
 class initHome extends HTMLElement{
     connectedCallback(){
         this.render();
-        // Deberia inicializar el state local cuando ponga el nombre de la persona. 
-        
+        state.refreshHandler();     
         this.querySelector(".new-game").addEventListener("click",(e)=>{
             e.preventDefault();
             Router.go("/nombre");
