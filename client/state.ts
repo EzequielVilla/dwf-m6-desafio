@@ -162,10 +162,11 @@ export const state = {
             const localData = JSON.parse(localStorage.getItem("data"))
             console.log(localData, "LOCAL DATA");
             
-            // this.setState({
-            //     ...afterUpgrade,
-            //     localData,
-            // })
+            this.setState({
+                ...afterUpgrade,
+            })
+            console.log(this.getState(), "que onda despues del setState");
+            
         });        
     },
   
