@@ -35,10 +35,15 @@ export const state = {
     },
 
     initLocalStorage(){
-        const lastState = this.getState();
+        let lastState = this.getState();
         localStorage.setItem("data", JSON.stringify({
             ...lastState,  
         }));
+        window.onbeforeunload = function() {
+            localStorage.setItem("data", JSON.stringify({
+                ...lastState,  
+            }));       
+        };
         const localData =JSON.parse(localStorage.getItem("data"))
         this.setState({
         ...localData,
