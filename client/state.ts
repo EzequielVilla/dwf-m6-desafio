@@ -34,20 +34,20 @@ export const state = {
         console.log('cambie:', this.data);
     },
 
-    initLocalStorage(){
-        console.log('entra a initLocalStorage');
+    // initLocalStorage(){
+    //     console.log('entra a initLocalStorage');
         
-        window.onbeforeunload = function() {
-            let lastState = this.getState();
-            localStorage.setItem("data", JSON.stringify({
-                ...lastState,  
-            }));       
-        };
-        const localData =JSON.parse(localStorage.getItem("data"));
-        this.setState({
-        ...localData,
-        });
-    },
+    //     window.onbeforeunload = function() {
+    //         let lastState = this.getState();
+    //         localStorage.setItem("data", JSON.stringify({
+    //             ...lastState,  
+    //         }));       
+    //     };
+    //     const localData =JSON.parse(localStorage.getItem("data"));
+    //     this.setState({
+    //     ...localData,
+    //     });
+    // },
 
     crearUsuario(nombre:string):Promise<any>{
         return fetch(API_BASE_URL+`/signup`,{
@@ -155,13 +155,15 @@ export const state = {
                 eligioP2,
                 ganador,
             });
+            const afterUpgrade = state.getState();
             
-            window.onbeforeunload = function() {
-                localStorage.setItem("data", JSON.stringify({
-                    ...lastState,  
-                }));       
-            };
-
+            localStorage.setItem("data", JSON.stringify({
+                ...afterUpgrade,       
+            }));
+            const localData = JSON.parse(localStorage.getItem("data"))
+            this.setState({
+                localData,
+            })
         });        
     },
   
