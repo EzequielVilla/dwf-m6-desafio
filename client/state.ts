@@ -141,26 +141,22 @@ export const state = {
                 eligioP2,
                 ganador,
             });
-            window.onbeforeunload = function() {
-                localStorage.setItem("data", JSON.stringify({
-                    ...lastState,
-                    jugador1,
-                    jugador2,
-                    scoreP1,
-                    scoreP2,
-                    eleccionP1,
-                    eleccionP2,
-                    readyP1,
-                    readyP2,
-                    eligioP1,
-                    eligioP2,
-                    ganador,
-                }));
-            }
+            
             
         });        
     },
-
+    refreshHandler(){
+        const lastState = this.getState();
+        window.onbeforeunload = function() {
+            localStorage.setItem("data", JSON.stringify({
+                lastState,
+            }));
+            const localData = JSON.parse(localStorage.getItem("score"));
+            this.setState({
+                localData,
+            })
+        };
+    },
     setJugada(jugada:string, jugador:string, rtdbRoomId:string):Promise<any>{
         
         return fetch(API_BASE_URL+`/setPlay/${jugador}`,{
