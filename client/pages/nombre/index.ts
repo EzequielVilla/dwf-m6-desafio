@@ -91,7 +91,6 @@ class initNombre extends HTMLElement{
                 justify-content: center;
                 align-items: center;
                 text-align: center;
-                font-family: Odibee Sans;
                 font-size: 45px;
             }
             .input-c{
