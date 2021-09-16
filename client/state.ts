@@ -149,9 +149,9 @@ export const state = {
         const lastState = this.getState();
         window.onbeforeunload = function() {
             localStorage.setItem("data", JSON.stringify({
-                lastState,
+                ...lastState,
             }));
-            const localData = JSON.parse(localStorage.getItem("score"));
+            const localData = JSON.parse(localStorage.getItem("data"));
             this.setState({
                 localData,
             })
