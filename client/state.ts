@@ -35,19 +35,16 @@ export const state = {
     },
 
     initLocalStorage(){
-        let lastState = this.getState();
-        localStorage.setItem("data", JSON.stringify({
-            ...lastState,  
-        }));
         window.onbeforeunload = function() {
+            let lastState = this.getState();
             localStorage.setItem("data", JSON.stringify({
                 ...lastState,  
             }));       
         };
-        const localData =JSON.parse(localStorage.getItem("data"))
+        const localData =JSON.parse(localStorage.getItem("data"));
         this.setState({
         ...localData,
-        })
+        });
     },
 
     crearUsuario(nombre:string):Promise<any>{
