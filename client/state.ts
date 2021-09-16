@@ -35,7 +35,6 @@ export const state = {
 
 
 
-
     crearUsuario(nombre:string):Promise<any>{
         return fetch(API_BASE_URL+`/signup`,{
             method: 'post',
@@ -110,7 +109,7 @@ export const state = {
 
     init(rtdbRoomId){
         const roomRef = rtdb.ref(`/gameRooms/rooms/${rtdbRoomId}`);
-        const miNombre = this.getState().miNombre;
+        
         
         roomRef.on("value", (snapshot) =>{
             const lastState = this.getState();
@@ -156,8 +155,9 @@ export const state = {
                 eligioP2,
                 ganador,
             }));
-            this.data = JSON.parse(localStorage.getItem("data"));
-
+            if(localStorage.getItem('data') != this.getState()){
+                this.data = localStorage.getItem('data');
+            }
             
         });        
     },
