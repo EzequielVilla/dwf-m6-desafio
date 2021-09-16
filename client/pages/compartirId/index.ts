@@ -17,7 +17,8 @@ class initCompartirId extends HTMLElement{
                 this.conexion = true;
                 this.render();
             }
-        })
+        });
+        this.render();
 
     }
     siguiente(){
