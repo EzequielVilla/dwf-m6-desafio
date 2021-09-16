@@ -160,11 +160,11 @@ export const state = {
             localStorage.setItem("data", JSON.stringify({
                 ...afterUpgrade,       
             }));
+            const localData = JSON.parse(localStorage.getItem("data"))
+            this.setState({
+                ...localData,
+            })
         });        
-        const localData = JSON.parse(localStorage.getItem("data"))
-        this.setState({
-            ...localData,
-        })
     },
   
     setJugada(jugada:string, jugador:string, rtdbRoomId:string):Promise<any>{
