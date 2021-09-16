@@ -3,7 +3,7 @@ import { state } from "../../state";
 
 class initAdvertencia extends HTMLElement{
     connectedCallback(){
-        state.refreshHandler();     
+        
 
         this.render();
         document.querySelector(".boton-comp").addEventListener("click", (e)=>{

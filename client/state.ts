@@ -141,22 +141,16 @@ export const state = {
                 eligioP2,
                 ganador,
             });
-            
+            window.onbeforeunload = function() {
+                localStorage.setItem("data", JSON.stringify({
+                    ...lastState,
+                }));
+            };
             
         });        
     },
     refreshHandler(){
         const lastState = this.getState();
-        window.onbeforeunload = function() {
-            localStorage.setItem("data", JSON.stringify({
-                ...lastState,
-            }));
-            const localData = JSON.parse(localStorage.getItem("data"));
-            setTimeout(()=>{},1000)
-            this.setState({
-                localData,
-            })
-        };
     },
     setJugada(jugada:string, jugador:string, rtdbRoomId:string):Promise<any>{
         

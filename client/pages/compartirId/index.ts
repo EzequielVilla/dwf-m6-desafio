@@ -6,7 +6,7 @@ class initCompartirId extends HTMLElement{
     conexion: boolean;
     texto: String
     connectedCallback(){
-        state.refreshHandler(); 
+        
         state.subscribe(()=>{
             const estadoActual = state.getState();
             if(estadoActual.jugador2 == false){

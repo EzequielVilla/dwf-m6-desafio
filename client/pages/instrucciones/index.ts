@@ -4,7 +4,7 @@ import { state } from "../../state";
 class initInstruccion extends HTMLElement{
     connectedCallback(){
         this.setFalseReady();
-        state.refreshHandler(); 
+        
         this.render();
     }
     setFalseReady(){

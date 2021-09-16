@@ -4,7 +4,7 @@ import { state } from "../../state";
 
 class initResultado extends HTMLElement{
     connectedCallback(){
-        state.refreshHandler(); 
+        
         this.render();
     }
     render(){

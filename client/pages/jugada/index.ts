@@ -6,7 +6,7 @@ import { state } from "./../../state";
 class initJugada extends HTMLElement{
     connectedCallback(){
         this.render();
-        state.refreshHandler(); 
+        
     }
 
 

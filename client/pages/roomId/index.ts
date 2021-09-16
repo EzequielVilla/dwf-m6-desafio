@@ -3,7 +3,7 @@ import { state } from "../../state";
 
 class initRoomId extends HTMLElement{
     connectedCallback(){
-        state.refreshHandler(); 
+        
         this.render();
         
         //toma el codigo que se ingresa y verifica 
