@@ -152,6 +152,7 @@ export const state = {
                 ...lastState,
             }));
             const localData = JSON.parse(localStorage.getItem("data"));
+            setTimeout(()=>{},1000)
             this.setState({
                 localData,
             })
