@@ -30,7 +30,7 @@ function main(){
     initCuadro();
     initInput();
     initInfo();
-    state.initLocalStorage();
+    // state.initLocalStorage();
 }
 
 main();

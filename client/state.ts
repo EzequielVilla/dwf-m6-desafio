@@ -162,7 +162,7 @@ export const state = {
             }));
             const localData = JSON.parse(localStorage.getItem("data"))
             this.setState({
-                localData,
+                ...localData,
             })
         });        
     },
