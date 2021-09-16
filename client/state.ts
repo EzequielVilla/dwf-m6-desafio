@@ -156,7 +156,8 @@ export const state = {
                 eligioP2,
                 ganador,
             }));
-            
+            this.data = JSON.parse(localStorage.getItem("data"));
+
             
         });        
     },
