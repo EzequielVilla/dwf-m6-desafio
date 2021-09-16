@@ -7,6 +7,7 @@ import { initTiempo } from "./components/tiempo";
 import { initInput } from "./components/input";
 import { initInfo } from "./components/info";
 
+import { state } from "./state";
 import "./pages/home/index";
 import "./pages/roomId/index"
 import "./pages/advertencia/index"
@@ -29,6 +30,7 @@ function main(){
     initCuadro();
     initInput();
     initInfo();
+    state.initLocalStorage();
 }
 
 main();

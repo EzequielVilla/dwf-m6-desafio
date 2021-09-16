@@ -146,30 +146,12 @@ export const state = {
             window.onbeforeunload = function() {
                 localStorage.setItem("data", JSON.stringify({
                     ...lastState,  
-                    refresh:true,
-                }));
-                this.refreshHandler();
+                }));       
             };
-            
+
         });        
     },
-    refreshHandler(){
-        const refresh = JSON.parse(localStorage.getItem("data")).refresh
-        console.log(refresh, 'refresh');
-        
-        if(refresh == true){
-            console.log('entra al if refresh');
-            
-            const data = JSON.parse(localStorage.getItem("data"));    
-            state.setState({
-                ...data,
-            })
-            localStorage.setItem("data", JSON.stringify({
-                refresh:false,
-            }));
-                
-        }
-    },
+  
     setJugada(jugada:string, jugador:string, rtdbRoomId:string):Promise<any>{
         
         return fetch(API_BASE_URL+`/setPlay/${jugador}`,{
