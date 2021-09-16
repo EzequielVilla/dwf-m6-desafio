@@ -144,12 +144,9 @@ export const state = {
             });
             
             window.onbeforeunload = function() {
-                this.setState({
-                    ...lastState,
-                    refresh:true,
-                })
                 localStorage.setItem("data", JSON.stringify({
                     ...lastState,  
+                    refresh:true,
                 }));
             };
             this.refreshHandler();
@@ -157,11 +154,19 @@ export const state = {
         });        
     },
     refreshHandler(){
-        if(this.getState().refresh == true){
+        const refresh = JSON.parse(localStorage.getItem("data")).refresh
+        console.log(refresh, 'refresh');
+        
+        if(refresh == true){
             console.log('entra al if refresh');
             
-            this.data = JSON.parse(localStorage.getItem("data"));    
-            this.data.refresh = false;
+            const data = JSON.parse(localStorage.getItem("data"));    
+            state.setState({
+                ...data,
+            })
+            localStorage.setItem("data", JSON.stringify({
+                refresh:false,
+            }));
                 
         }
     },
