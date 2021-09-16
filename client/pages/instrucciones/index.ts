@@ -33,11 +33,31 @@ class initInstruccion extends HTMLElement{
                 
             }
             .boton-comp{
-                margin: 45px 20px 65px 85px;
+                margin: 45px 20px 65px 65px;
 
             }
             .footer-comp{
                 margin-left:50px;
+            }
+
+            .boton-comp{
+                margin-top: 45px;
+                margin-bottom:65px;
+                display:flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                text-align: center;
+    
+            }
+
+            .footer-comp{
+                display:flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                text-align: center;
+                
             }
             @media (min-width: 376px) {
                 .inst-cont{
@@ -55,27 +75,9 @@ class initInstruccion extends HTMLElement{
                     text-align: center;
                 }
                 .titulo-cont__texto{   
-                    
                     width:300px;             
                 }
-                .boton-comp{
-                    margin-top: 45px;
-                    margin-bottom:65px;
-                    display:flex;
-                    flex-direction: column;
-                    justify-content: center;
-                    align-items: center;
-                    text-align: center;
-        
-                }
-                .footer-comp{
-                    display:flex;
-                    flex-direction: column;
-                    justify-content: center;
-                    align-items: center;
-                    text-align: center;
-                    
-                }
+               
             
             }
         `

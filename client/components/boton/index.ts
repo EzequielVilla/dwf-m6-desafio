@@ -19,7 +19,8 @@ export function initBoton(){
                 src: url("./../../fonts/OdibeeSans-Regular.ttf");
             }
                 .boton{
-                    padding:20px 20px;
+                    margin-top:10px;
+                    padding:10px 10px;
                     border: solid 10px #001997;
                     border-radius:10px;
                     background-color: #006CFC;
@@ -28,6 +29,7 @@ export function initBoton(){
                     color:white;
                     cursor: pointer; 
                     max-width: 325px;
+                    min-width: 325px;
                     
 
                 }

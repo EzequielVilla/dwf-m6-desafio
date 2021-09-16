@@ -1,5 +1,9 @@
+@font-face {
+    font-family: "odibee";
+    src: url("./fonts/OdibeeSans-Regular.ttf");
+}
 * {
-    font-family: "Poppins", sans-serif;
+    font-family: "odibee";
     margin: 0;
     box-sizing: border-box;
 }

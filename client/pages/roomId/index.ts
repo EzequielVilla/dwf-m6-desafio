@@ -11,26 +11,21 @@ class initRoomId extends HTMLElement{
             e.preventDefault();
             const id = document.querySelector(".codigo").shadowRoot.querySelector("input").value;
             const lastState = state.getState();
-            state.validateRoomId(id).then((res)=>{
-    
-                
-                res.json().then(respuesta=>{
-                    
+            state.validateRoomId(id).then((res)=>{   
+                res.json().then(respuesta=>{            
                     if(respuesta.existe == true){
                         state.setState({
                             ...lastState,
                             unir : respuesta.existe,
                             roomId: id,
                             rtdbRoomId: respuesta.rtdbRoomId,
-                        })
-                        
+                        })     
                         Router.go("/nombre")
                     } else{
                         state.setState({
                             ...lastState,
                             unir: respuesta.existe,
                         })
-                        //crear algun alerta que diga que ese room no existe. 
                     }
                     
                 })
@@ -41,59 +36,60 @@ class initRoomId extends HTMLElement{
 
     render():void{
         var style = document.createElement("style");
-
         style.textContent=
         `
+      
+        .titulo{
+            padding-top : 70px;
+            padding-left: 35px;
+            font-size: 80px;
+            color: #009048;
+        }
+        .boton-comp{
+            margin: 45px 20px 65px 85px;
+        }
+        .footer-comp{
+            margin-left:50px;
+        }
+        @media (min-width: 376px) {
             .titulo{
-                padding-top : 70px;
-                padding-left: 35px;
-                font-size: 80px;
-                color: #009048;
+                display:flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                text-align: center;
             }
             .boton-comp{
-                margin: 45px 20px 65px 85px;
+                display:flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                text-align: center;
             }
             .footer-comp{
-                margin-left:50px;
+                display:flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                text-align: center;
             }
-            @media (min-width: 376px) {
-                .titulo{
-                    display:flex;
-                    flex-direction: column;
-                    justify-content: center;
-                    align-items: center;
-                    text-align: center;
-                }
-                .boton-comp{
-                    display:flex;
-                    flex-direction: column;
-                    justify-content: center;
-                    align-items: center;
-                    text-align: center;
-                }
-                .footer-comp{
-                    display:flex;
-                    flex-direction: column;
-                    justify-content: center;
-                    align-items: center;
-                    text-align: center;
-                }
-            }
+        }
         `
+    
         this.innerHTML=
         `
         
-            <h1 class="titulo">Piedra <br> Papel o<br>Tijera </h1>
-            <div class="boton-comp">
-                <input-component class="codigo">codigo</input-component>
-                <boton-component class="room">Ingresar a la sala</boton-component>
-            </div>
-            <div class="footer-comp">
-                <footer-component></footer-component>
-            </div>
+        <h1 class="titulo">Piedra <br> Papel o<br>Tijera </h1>
+        <div class="boton-comp">
+        <input-component class="codigo">código</input-component>
+        <boton-component class="room">Ingresar a la sala</boton-component>
+        </div>
+        <div class="footer-comp">
+        <footer-component></footer-component>
+        </div>
         
-    `
-    this.appendChild(style);
+        `
+        this.appendChild(style);         
     }
 }
 

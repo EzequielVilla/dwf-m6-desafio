@@ -21,7 +21,7 @@ export function initFooter(){
                     overflow: hidden;
                 }
                 img{
-                    margin-right:45px;
+                    margin-right:40px;
                     margin-bottom:-30px; 
                 }
             `

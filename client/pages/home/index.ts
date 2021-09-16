@@ -5,10 +5,7 @@ class initHome extends HTMLElement{
     connectedCallback(){
         this.render();
         // Deberia inicializar el state local cuando ponga el nombre de la persona. 
-        const lastState = state.getState();
-        if (lastState.inicializo == false){
-            state.initScore();
-        }
+        
         this.querySelector(".new-game").addEventListener("click",(e)=>{
             e.preventDefault();
             Router.go("/nombre");
@@ -30,36 +27,29 @@ class initHome extends HTMLElement{
                 padding-left: 35px;
                 font-size: 80px;
                 color: #009048;
+                display:flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                text-align: center;
             }
             .boton-comp{
-                margin: 45px 20px 65px 85px;
+                display:flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                text-align: center;
+                margin: 45px 20px 65px 65px;
             }
             .footer-comp{
                 margin-left:50px;
+                display:flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                text-align: center;
             }
-            @media (min-width: 376px) {
-                .titulo{
-                    display:flex;
-                    flex-direction: column;
-                    justify-content: center;
-                    align-items: center;
-                    text-align: center;
-                }
-                .boton-comp{
-                    display:flex;
-                    flex-direction: column;
-                    justify-content: center;
-                    align-items: center;
-                    text-align: center;
-                }
-                .footer-comp{
-                    display:flex;
-                    flex-direction: column;
-                    justify-content: center;
-                    align-items: center;
-                    text-align: center;
-                }
-            }
+          
         `
         this.innerHTML=
         `

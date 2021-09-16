@@ -25,33 +25,25 @@ class initEspera extends HTMLElement{
         const esperandoA = this.esperandoA(miNombre,p1,p2);
         style.textContent=
         `
-            .titulo{
-                padding-top : 70px;
-                padding-left: 35px;
-                font-size: 80px;
-                color: #009048;
-            }
-            
             .footer-comp{
                 margin-left:50px;
+                display:flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                text-align: center;
+            }        
+            .titulo-cont{
+                margin: 200px 0px;
+                display:flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                text-align: center;
+                font-size: 35px;
             }
-            @media (min-width: 376px) {
-                .titulo{
-                    display:flex;
-                    flex-direction: column;
-                    justify-content: center;
-                    align-items: center;
-                    text-align: center;
-                }
-               
-                .footer-comp{
-                    display:flex;
-                    flex-direction: column;
-                    justify-content: center;
-                    align-items: center;
-                    text-align: center;
-                }
-            }
+            
+            .
         `
         this.innerHTML=
         `

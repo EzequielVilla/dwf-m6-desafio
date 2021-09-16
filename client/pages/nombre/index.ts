@@ -73,21 +73,31 @@ class initNombre extends HTMLElement{
                 padding-left: 35px;
                 font-size: 80px;
                 color: #009048;
+                display:flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                text-align: center;
             }
             .boton-comp{
-                margin: 45px 20px 65px 85px;
+                margin: 45px 20px 65px 65px;
             }
             .footer-comp{
                 margin-left:50px;
             }
+            .nombre-titulo{
+                display:flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                text-align: center;
+                font-family: Odibee Sans;
+                font-size: 45px;
+            }
+            .input-c{
+                margin: 20px 0px 20px 0px;
+            }
             @media (min-width: 376px) {
-                .titulo{
-                    display:flex;
-                    flex-direction: column;
-                    justify-content: center;
-                    align-items: center;
-                    text-align: center;
-                }
                 .boton-comp{
                     display:flex;
                     flex-direction: column;
@@ -102,12 +112,18 @@ class initNombre extends HTMLElement{
                     align-items: center;
                     text-align: center;
                 }
+                
+                    
+                    
+
+                
             }
         `
         this.innerHTML=
         `
             <h1 class="titulo">Piedra <br> Papel o<br>Tijera </h1>
             <div class="boton-comp">
+                <p class="nombre-titulo">Tu nombre</p>
                 <input-component class="nombre"></input-component>
                 <boton-component class="empezar">Empezar</boton-component>
                

@@ -19,7 +19,7 @@ export function initEstrella(){
                 position:absolute;
                 z-index:1;  
                 top:13%;
-                padding-left:45px;
+                padding-left:75px;
 
                 margin-top:1023px;
                 

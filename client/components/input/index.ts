@@ -15,18 +15,16 @@ export function initInput(){
                 font-family: "odibee";
                 src: url("./../../fonts/OdibeeSans-Regular.ttf");
             }
-                .input-c{
-                    padding:20px 20px;
-                    border: solid 10px #001997;
-                    border-radius:10px;
-                    font-family: odibee;
-                    font-size: 40px;
-                    
-                    
-                    max-width: 325px;
-                    
-
-                }
+            .input-c{
+                padding:20px 0px;
+                border: solid 10px #001997;
+                border-radius:10px;
+                font-family: odibee;
+                font-size: 40px;
+                max-width: 325px;
+                min-width: 325px;
+                text-align: center;
+            }
             `
 
 
