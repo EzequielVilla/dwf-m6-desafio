@@ -142,22 +142,23 @@ export const state = {
                 eligioP2,
                 ganador,
             });
-            if(state.getState().refresh == true){
-                this.data = JSON.parse(localStorage.getItem("score"));    
-                this.data.refresh = false;
-                    
-            }
+            
             window.onbeforeunload = function() {
                 localStorage.setItem("data", JSON.stringify({
                     ...lastState,
                     refresh:true,
                 }));
             };
+            this.refreshHandler();
             
         });        
     },
     refreshHandler(){
-        const lastState = this.getState();
+        if(state.getState().refresh == true){
+            this.data = JSON.parse(localStorage.getItem("data"));    
+            this.data.refresh = false;
+                
+        }
     },
     setJugada(jugada:string, jugador:string, rtdbRoomId:string):Promise<any>{
         
