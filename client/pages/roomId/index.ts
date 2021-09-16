@@ -5,7 +5,7 @@ class initRoomId extends HTMLElement{
     connectedCallback(){
         this.render();
         
-        //tomar el codigo que se ingresa y verificar 
+        //toma el codigo que se ingresa y verifica 
         
         this.querySelector(".room").addEventListener("click",(e)=>{
             e.preventDefault();

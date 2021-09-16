@@ -5,9 +5,6 @@ import { state } from "./../../state";
 
 class initJugada extends HTMLElement{
     connectedCallback(){
-        // state.subscribe(()=>{
-        //     this.render();
-        // })
         this.render();
     }
 
@@ -97,11 +94,7 @@ class initJugada extends HTMLElement{
             const p1 = state.getState().jugador1;
             const jugada = mano.getAttribute("name");
             const rtdbRoomId = state.getState().rtdbRoomId;
-            // let eleccionP1 ;
-            // let eleccionP2 ;
 
-
-            
             if(miNombre == p1){
                 state.setJugada(jugada, "jugador1", rtdbRoomId).then(res=>{
                     state.setPunto();    
@@ -141,10 +134,7 @@ class initJugada extends HTMLElement{
         shadow.appendChild(otroEstilo);
         setTimeout(()=>{},1000);
     }
-    
-    //cuando el contador llegue a 0 y ambos hayan elegido una opcion
-    //cambiar el estilo de la pagina por uno nuevo(esta funcion) y mostrar las manos que eligieron los dos.
-    //en caso de que uno no haya elegido ir a instrucciones.
+
      estiloResultadoFinal(eleccionP1:string, eleccionP2:string){
         
         
@@ -205,7 +195,7 @@ class initJugada extends HTMLElement{
         const jugador1 = state.getState().jugador1;
 
 
-        //Esta seria la visual de p1, girar todo para la visual del p2
+        //Esta seria la visual de p1, gira todo para la visual del p2
         if(miNombre == jugador1){
 
             const p2 = this.querySelector(".pc__comp").shadowRoot;
@@ -324,10 +314,6 @@ class initJugada extends HTMLElement{
     }
     
      contador(containerEl){
-        // const boton = containerEl.querySelector('.comp__footer');
-        // boton.addEventListener("click", (e)=>{
-        //     clearInterval(intervalo);
-        // });   
         
         var tiempo = containerEl.querySelector('tiempo-component').shadowRoot.querySelector('.contador');
         tiempo.innerHTML = "3";

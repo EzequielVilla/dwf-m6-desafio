@@ -40,7 +40,7 @@ app.post("/signup",(req,res)=>{
 //crear el room
 app.post("/createroom", (req,res)=>{
     const {nombre} = req.body;    
-    //solo existe si ya hay un registro con ese ID.
+    //crea por default p1 y p2(vacio).
     userCollection.doc(nombre.toString()).get().then(doc=>{
         if(!doc.exists){            
             const roomRef = rtdb.ref('/gameRooms/rooms/'+ nanoid());
@@ -74,11 +74,6 @@ app.post("/createroom", (req,res)=>{
                     })
             })
         } 
-        // else{
-        //     res.status(401).json({
-        //         message: "no existis",
-        //     })
-        // }
     })
 })
 
@@ -176,24 +171,6 @@ app.post("/setGanador/:jugador",(req,res)=>{
         })
     })
 })
-//verificar si existe
-app.get("/room/:roomId",(req,res)=>{
-
-}),
-
-//verificar los usuarios dentro de la sala para ver si coincide con el introducido
-//y resolver en state
-
-
-
-
-
-
-
-
-
-
-
 app.get("*", (req, res)=>{ 
     res.sendFile(path.join(__dirname,'../dist/index.html'));
 }),

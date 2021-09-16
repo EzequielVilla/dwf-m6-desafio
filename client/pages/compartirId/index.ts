@@ -26,7 +26,7 @@ class initCompartirId extends HTMLElement{
             Router.go("/instrucciones")
         })
     }
-    //espero un cambio en la db para ver si ingreso alguien 
+    
 
     render():void{
         const roomId = state.getState().roomId;

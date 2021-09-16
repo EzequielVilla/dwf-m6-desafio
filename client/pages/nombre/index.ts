@@ -10,7 +10,6 @@ class initNombre extends HTMLElement{
         }
         this.render();
 
-       //tomar el codigo que se ingresa y verificar 
         this.querySelector(".empezar").addEventListener("click",(e)=>{
             e.preventDefault();
             const nombre = document.querySelector(".nombre").shadowRoot.querySelector("input").value;

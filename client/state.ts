@@ -108,10 +108,9 @@ export const state = {
         });
     },
 
-
-
     init(rtdbRoomId){
         const roomRef = rtdb.ref(`/gameRooms/rooms/${rtdbRoomId}`);
+        const miNombre = this.getState().miNombre;
         
         roomRef.on("value", (snapshot) =>{
             const lastState = this.getState();
@@ -128,9 +127,8 @@ export const state = {
             const jugador2 = p2.nombre;
             const eligioP1 = p1.eligio;
             const eligioP2 = p2.eligio;
-
             
-            this.setState({
+            localStorage.setItem("data", JSON.stringify({
                 ...lastState,
                 jugador1,
                 jugador2,
@@ -143,8 +141,10 @@ export const state = {
                 eligioP1,
                 eligioP2,
                 ganador,
-            }) 
-        });
+            }));
+            this.data = JSON.parse(localStorage.getItem("data"));
+            
+        });        
     },
 
     setJugada(jugada:string, jugador:string, rtdbRoomId:string):Promise<any>{
