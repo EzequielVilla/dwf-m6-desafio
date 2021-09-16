@@ -35,6 +35,10 @@ export const state = {
     },
 
     initLocalStorage(){
+        const lastState = this.getState();
+        localStorage.setItem("data", JSON.stringify({
+            ...lastState,  
+        }));
         const localData =JSON.parse(localStorage.getItem("data"))
         this.setState({
         ...localData,
