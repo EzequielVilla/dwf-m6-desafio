@@ -9,8 +9,6 @@ import * as cors from "cors";
 const port = process.env.PORT || 3000;
 
 
-console.log(port);
-
 const app = express();
 app.use(express.json());
 app.use(cors());
@@ -68,7 +66,7 @@ app.post("/createroom", (req,res)=>{
                 roomsCollection.doc(roomId.toString()).set({
                     rtdbRoomId : roomLongId,
                 }).then(()=>{})
-                    res.json({
+                    res.status(200).json({
                         id:roomId.toString(),
                         rtdbRoomId: roomRef.key,
                     })
@@ -83,7 +81,7 @@ app.get("/checkid/:roomId",(req,res)=>{
     roomsCollection.doc(roomId.toString()).get().then(doc=>{
         const rtdbRoomId = doc.get("rtdbRoomId");
         const existe = (doc.exists);        
-        return res.json({
+        return res.status(200).json({
             rtdbRoomId,
             existe
         });
@@ -96,7 +94,7 @@ app.get("/verify/:rtdbRoomId", (req,res)=>{
     console.log(referencia.key);    
     referencia.once("value", snap=>{
         const contenido = snap.val();
-        res.json(contenido)
+        res.status(200).json(contenido)
     })     
 })
 app.post("/pushUser/:rtdbRoomId",(req,res)=>{
@@ -106,7 +104,7 @@ app.post("/pushUser/:rtdbRoomId",(req,res)=>{
     roomRef.update({
             nombre,
     }, ()=>{
-        res.json(`push jugador con nombre:${nombre}`)
+        res.status(200).json(`push jugador con nombre:${nombre}`)
     })
 })
 //En jugador entra: jugador1 || jugador2
@@ -116,7 +114,7 @@ app.post("/setReady", (req, res)=>{
     roomRef.update({
         ready,
     }).then(()=>{
-        res.json(`ready: ${ready}`)
+        res.status(200).json(`ready: ${ready}`)
     })
     
 })
@@ -129,7 +127,7 @@ app.post("/setPlay/:jugador",(req,res)=>{
         eleccion:jugada,
         eligio: true,
     }).then(()=>{
-        res.json(`La eleccion fue ${jugada}`)
+        res.status(200).json(`La eleccion fue ${jugada}`)
     })
 }),
 //En jugador entra: jugador1 || jugador2
@@ -141,7 +139,7 @@ app.post("/setPunto/:jugador",(req,res)=>{
     roomRef.update({
         score,
     }).then(()=>{
-        res.json({
+        res.status(200).json({
             message: `Punto para ${jugador}`
         })
     });
@@ -154,7 +152,7 @@ app.post("/setFalse/:jugador",(req,res)=>{
         eligio:false,
         ready:false
     }).then(()=>{
-        res.json({
+        res.status(200).json({
             message: "Se paso a false los eligio",
         })
     })
@@ -166,7 +164,7 @@ app.post("/setGanador/:jugador",(req,res)=>{
     roomRef.update({
         ganador:jugador,
     }).then(()=>{
-        res.json({
+        res.status(200).json({
             message:"seteo ganador",
         })
     })

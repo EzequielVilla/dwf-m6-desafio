@@ -15,7 +15,6 @@ type Jugadores = "usuario" | "pc";
 export const state = {
     data : {
         unir: false,
-        refresh:false,
     },
     listeners:[],
 
