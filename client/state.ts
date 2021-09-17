@@ -110,10 +110,11 @@ export const state = {
     initLocalStorage(){
         const localData = JSON.parse(localStorage.getItem("data"))        
         console.log(localData, 'mostrar local data');
-        
-        this.setState({
-            ...localData,
-        });
+        if(localData != null){
+            this.setState({
+                ...localData,
+            });
+        }
     },
 
     init(rtdbRoomId){
