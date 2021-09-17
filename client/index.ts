@@ -22,6 +22,7 @@ import "./routes"
 
 
 function main(){
+    state.initLocalStorage();
     initBoton();
     initEstrella();
     initJugadas();
@@ -30,7 +31,6 @@ function main(){
     initCuadro();
     initInput();
     initInfo();
-    state.initLocalStorage();
 }
 
 main();
