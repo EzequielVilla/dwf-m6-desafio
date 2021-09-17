@@ -114,6 +114,8 @@ export const state = {
             this.setState({
                 ...localData,
             });
+            const rtdbRoomId = state.getState().rtdbRoomId;
+            this.init(rtdbRoomId);
         }
     },
 
