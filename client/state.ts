@@ -34,20 +34,9 @@ export const state = {
         console.log('cambie:', this.data);
     },
 
-    // initLocalStorage(){
-    //     console.log('entra a initLocalStorage');
+    initLocalStorage(){
         
-    //     window.onbeforeunload = function() {
-    //         let lastState = this.getState();
-    //         localStorage.setItem("data", JSON.stringify({
-    //             ...lastState,  
-    //         }));       
-    //     };
-    //     const localData =JSON.parse(localStorage.getItem("data"));
-    //     this.setState({
-    //     ...localData,
-    //     });
-    // },
+    },
 
     crearUsuario(nombre:string):Promise<any>{
         return fetch(API_BASE_URL+`/signup`,{
@@ -123,6 +112,10 @@ export const state = {
 
     init(rtdbRoomId){
         const roomRef = rtdb.ref(`/gameRooms/rooms/${rtdbRoomId}`);
+        const estado = state.getState();
+        localStorage.setItem("data", JSON.stringify({
+            ...estado,       
+        }));
         roomRef.on("value", (snapshot) =>{
             const lastState = this.getState();
             const p1 = snapshot.val().jugador1;
@@ -158,16 +151,7 @@ export const state = {
                 ...afterUpgrade,       
             }));
         });    
-        const estado = state.getState();
-        localStorage.setItem("data", JSON.stringify({
-            ...estado,       
-        }));
-        const localData = JSON.parse(localStorage.getItem("data"))
-        console.log(localData, "LOCAL DATA");
         
-        this.setState({
-            ...localData,
-        })
 
     },
   
