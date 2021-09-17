@@ -109,6 +109,8 @@ export const state = {
     },
     initLocalStorage(){
         const localData = JSON.parse(localStorage.getItem("data"))        
+        console.log(localData, 'mostrar local data');
+        
         this.setState({
             ...localData,
         });
