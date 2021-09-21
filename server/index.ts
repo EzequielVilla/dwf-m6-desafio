@@ -12,7 +12,7 @@ const port = process.env.PORT || 3000;
 const app = express();
 app.use(express.json());
 app.use(cors());
-app.options('*', cors())
+
 app.use(express.static('dist'));
 
 
@@ -107,56 +107,6 @@ app.post("/pushUser/:rtdbRoomId",(req,res)=>{
         res.status(200).json(`push jugador con nombre:${nombre}`)
     })
 })
-//En jugador entra: jugador1 || jugador2
-app.post("/setReady", (req, res)=>{
-    const {jugador, rtdbRoomId,ready} = req.body;    
-    const roomRef = rtdb.ref(`/gameRooms/rooms/${rtdbRoomId}/${jugador}`);    
-    roomRef.update({
-        ready,
-    }).then(()=>{
-        res.status(200).json(`ready: ${ready}`)
-    })
-    
-})
-//En jugador entra: jugador1 || jugador2
-app.post("/setPlay/:jugador",(req,res)=>{
-    const {jugador} = req.params;
-    const {jugada,rtdbRoomId} = req.body;
-    const roomRef = rtdb.ref(`/gameRooms/rooms/${rtdbRoomId}/${jugador}`);
-    roomRef.update({
-        eleccion:jugada,
-        eligio: true,
-    }).then(()=>{
-        res.status(200).json(`La eleccion fue ${jugada}`)
-    })
-}),
-//En jugador entra: jugador1 || jugador2
-
-app.post("/setPunto/:jugador",(req,res)=>{
-    const {jugador} = req.params;
-    const {score,rtdbRoomId} = req.body;
-    const roomRef = rtdb.ref(`/gameRooms/rooms/${rtdbRoomId}/${jugador}`);
-    roomRef.update({
-        score,
-    }).then(()=>{
-        res.status(200).json({
-            message: `Punto para ${jugador}`
-        })
-    });
-})
-app.post("/setFalse/:jugador",(req,res)=>{
-    const {jugador} = req.params;
-    const {rtdbRoomId} = req.body;
-    const roomRef = rtdb.ref(`/gameRooms/rooms/${rtdbRoomId}/${jugador}`);
-    roomRef.update({
-        eligio:false,
-        ready:false
-    }).then(()=>{
-        res.status(200).json({
-            message: "Se paso a false los eligio",
-        })
-    })
-})
 app.post("/setGanador/:jugador",(req,res)=>{
     const {jugador} = req.params;
     const {rtdbRoomId} = req.body;
@@ -172,6 +122,49 @@ app.post("/setGanador/:jugador",(req,res)=>{
 app.get("*", (req, res)=>{ 
     res.sendFile(path.join(__dirname,'../dist/index.html'));
 }),
+//Hago cambios en la RTDB segun el parametro que entra del body.
+app.put("/gamedata/:jugador",(req,res)=>{
+    const {jugador} = req.params;
+    const {rtdbRoomId,score,jugada,ready,setFalse} = req.body;
+    const roomRef = rtdb.ref(`/gameRooms/rooms/${rtdbRoomId}/${jugador}`);
+    if(ready){
+        roomRef.update({
+            ready,
+        }).then(()=>{
+            res.status(200).json(`ready: ${ready}`)
+        })
+    }else if(jugada){
+        roomRef.update({
+            eleccion:jugada,
+            eligio: true,
+        }).then(()=>{
+            res.status(200).json(`La eleccion fue ${jugada}`)
+        })
+    }else if(score){
+        roomRef.update({
+            score,
+        }).then(()=>{
+            res.status(200).json({
+                message: `Punto para ${jugador}`
+            })
+        });
+    }else if(setFalse){
+        roomRef.update({
+            eligio:false,
+            ready:false
+        }).then(()=>{
+            res.status(200).json({
+                message: "Se paso a false los eligio",
+            })
+        })
+    }else{
+        res.status(400).json({
+            message: "No hubo un parametro aceptado",
+        })
+    }
+})
+
+
 
 app.listen(port,()=>{
     console.log(`escuchando en ${port}` );

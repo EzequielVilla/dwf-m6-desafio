@@ -1,10 +1,6 @@
 import {rtdb} from "./rtdb"
 
 const API_BASE_URL = process.env.API_BASE_URL || "http://localhost:3000";
-console.log(process.env.API_BASE_URL, 'process.env.HOST');
-
-
-
 
 
 type Jugada = "piedra" | "papel" | "tijera";
@@ -90,7 +86,7 @@ export const state = {
             }),
         })
     },
-    setReady(nombre:string, rtdbRoomId:string, ready:boolean){
+    setReady(nombre:string, rtdbRoomId:string, ready:boolean):void{
         let jugador:string;
         if (nombre == this.data.jugador1) jugador = "jugador1";
         else jugador = "jugador2" 
@@ -106,7 +102,7 @@ export const state = {
             })
         });
     },
-    initLocalStorage(){
+    initLocalStorage():void{
         const localData = JSON.parse(localStorage.getItem("data"))        
         console.log(localData, 'mostrar local data');
         if(localData != null){
@@ -118,7 +114,7 @@ export const state = {
         }
     },
 
-    init(rtdbRoomId){
+    init(rtdbRoomId:string):void{
         const roomRef = rtdb.ref(`/gameRooms/rooms/${rtdbRoomId}`);
         roomRef.on("value", (snapshot) =>{
             const lastState = this.getState();
@@ -173,7 +169,7 @@ export const state = {
         });
 
     },
-    setPunto(){
+    setPunto():void{
         const eligio1 = this.getState().eligioP1;
         const eligio2 = this.getState().eligioP2;
         const eleccionP1 = this.getState().eleccionP1;
